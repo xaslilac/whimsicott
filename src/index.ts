@@ -9,13 +9,11 @@ const puppies = [
 ];
 
 const $PuppiesRequestBody = $interface({
-	count: $number.that((n) => n < puppies.length),
+	count: $number.that((n) => n <= puppies.length),
 });
 
 async function handler(req: Request): Promise<Response> {
 	const url = new URL(req.url);
-
-	console.log(req.url);
 
 	if (url.pathname === "/api/puppies") {
 		try {
@@ -44,4 +42,9 @@ async function handler(req: Request): Promise<Response> {
 }
 
 console.log("Listening on http://localhost:8000");
-await serve(handler);
+await serve(async (req: Request) => {
+	console.log("%c => ", "color: green", req.url);
+	const res = await handler(req);
+	console.log("%c <= ", "color: magenta", res.status, await res.text());
+	return res;
+});
