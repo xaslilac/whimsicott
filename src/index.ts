@@ -45,6 +45,6 @@ console.log("Listening on http://localhost:8000");
 await serve(async (req: Request) => {
 	console.log("%c => ", "color: green", req.url);
 	const res = await handler(req);
-	console.log("%c <= ", "color: magenta", res.status, await res.text());
+	console.log("%c <= ", "color: magenta", res.status);
 	return res;
 });

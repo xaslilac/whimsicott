@@ -1,6 +1,6 @@
 {
 	"imports": {
-		"std/http": "https://deno.land/std@0.114.0/http/server.ts",
+		"std/http": "https://deno.land/std@0.140.0/http/server.ts",
 		"succulent": "https://esm.sh/succulent@0.18.0"
 	}
 }
