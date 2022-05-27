@@ -1,4 +1,4 @@
-import { serve } from "std/http";
+import { serve } from "std/http/server.ts";
 import { $interface, $number, guard } from "succulent";
 
 const puppies = [
