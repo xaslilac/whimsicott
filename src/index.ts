@@ -1,7 +1,14 @@
 import { serve } from "std/http/server.ts";
 import { $interface, $number, guard } from "succulent";
 
-const puppies = ["August", "Dot", "Mady", "Spot", "Toby"];
+const puppies = [
+	"August",
+	"Dot",
+	"Mady",
+	"Spot",
+	"Toby",
+	"uhhh so other puppy",
+];
 
 const $PuppiesRequestBody = $interface({
 	count: $number.that((n) => n <= puppies.length),
