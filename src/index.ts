@@ -8,6 +8,7 @@ const puppies = [
 	"Spot",
 	"Toby",
 	"uhhh some other puppy!",
+	"this is gonna break shit, init",
 ];
 
 const $PuppiesRequestBody = $interface({
