@@ -1,12 +1,7 @@
 import { serve } from "std/http/server.ts";
 import { $interface, $number, guard } from "succulent";
 
-const puppies = [
-	"August",
-	"Dot",
-	"Mady",
-	"Toby",
-];
+const puppies = ["August", "Dot", "Mady", "Spot", "Toby"];
 
 const $PuppiesRequestBody = $interface({
 	count: $number.that((n) => n <= puppies.length),
@@ -36,9 +31,12 @@ async function handler(req: Request): Promise<Response> {
 		});
 	}
 
-	return new Response("Hi friend!", {
-		headers: { "content-type": "text/html" },
-	});
+	return new Response(
+		"Hi friend! Beep boop :) " + puppies.join(" is cute! "),
+		{
+			headers: { "content-type": "text/html" },
+		},
+	);
 }
 
 console.log("Listening on http://localhost:8000");
