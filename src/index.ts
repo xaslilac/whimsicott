@@ -31,9 +31,12 @@ async function handler(req: Request): Promise<Response> {
 		});
 	}
 
-	return new Response("Hi friend! Beep boop :)", {
-		headers: { "content-type": "text/html" },
-	});
+	return new Response(
+		"Hi friend! Beep boop :) " + puppies.join(" is cute! "),
+		{
+			headers: { "content-type": "text/html" },
+		},
+	);
 }
 
 console.log("Listening on http://localhost:8000");
