@@ -39,7 +39,7 @@ async function handler(req: Request): Promise<Response> {
 		});
 	}
 
-	return new Response("Hi friend!", {
+	return new Response("Hi friend! Beep boop :)", {
 		headers: { "content-type": "text/html" },
 	});
 }
