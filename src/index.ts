@@ -12,6 +12,11 @@ const puppies = [
 	"Mady",
 	"Spot",
 	"Toby",
+	"August",
+	"Dot",
+	"Mady",
+	"Spot",
+	"Toby",
 ];
 
 const $PuppiesRequestBody = $interface({
