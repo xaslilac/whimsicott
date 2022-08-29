@@ -38,7 +38,7 @@ async function handler(req: Request): Promise<Response> {
 	}
 
 	let list = puppies.map((name) => `${name} is cute!`);
-	
+
 	return new Response(
 		"Hi friend! Beep boop :)<br />" + list.join("<br />"),
 		{
