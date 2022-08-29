@@ -7,31 +7,6 @@ const puppies = [
 	"Mady",
 	"Spot",
 	"Toby",
-	"August",
-	"Dot",
-	"Mady",
-	"Spot",
-	"Toby",
-	"August",
-	"Dot",
-	"Mady",
-	"Spot",
-	"Toby",
-	"August",
-	"Dot",
-	"Mady",
-	"Spot",
-	"Toby",
-	"August",
-	"Dot",
-	"Mady",
-	"Spot",
-	"Toby",
-	"August",
-	"Dot",
-	"Mady",
-	"Spot",
-	"Toby",
 ];
 
 const $PuppiesRequestBody = $interface({
@@ -62,8 +37,10 @@ async function handler(req: Request): Promise<Response> {
 		});
 	}
 
+	let list = puppies.map((name) => `${name} is cute!`);
+
 	return new Response(
-		"Hi friend! Beep boop :) " + puppies.join(" is cute! "),
+		"Hi friend! Beep boop :)<br />" + list.join("<br />"),
 		{
 			headers: { "content-type": "text/html" },
 		},
