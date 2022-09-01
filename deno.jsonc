@@ -9,7 +9,7 @@
 	"tasks": {
 		"start": "deno run --allow-net=0.0.0.0:8000 ./src/index.ts",
 		"deploy": "deployctl deploy --project=whimsicott-ctl --import-map=./imports.importmap ./src/index.ts",
-		"deploy:staging": "stagingctl deploy --project=whimsicott-ctl --import-map=./imports.importmap ./src/index.ts"
+		"deploy:staging": "stagingctl deploy --project=whimsicott-ctl --import-map=./imports.importmap ./src/index.ts",
 		"deploy:local": "localctl deploy --project=whimsicott-ctl --import-map=./imports.importmap ./src/index.ts"
 	}
 }
