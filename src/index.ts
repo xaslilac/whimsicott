@@ -4,6 +4,7 @@ import { $interface, $number, guard } from "succulent";
 const puppies = [
 	"August",
 	"Dot",
+	"Lilac",
 	"Mady",
 	"Spot",
 	"Toby",
