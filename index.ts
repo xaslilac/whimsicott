@@ -1,9 +1,9 @@
 import { serve } from "std/http/server.ts";
 import { $interface, $number, guard } from "succulent";
 
-const puppiesThunk = Deno.readTextFile("./data.json").then(JSON.parse).then((data) =>
-	data.puppies
-);
+const puppiesThunk = Deno.readTextFile("./data.json").then(JSON.parse).then((
+	data,
+) => data.puppies);
 
 const $PuppiesRequestBody = $interface({
 	count: $number.that((n) => n <= puppies.length),
