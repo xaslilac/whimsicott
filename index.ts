@@ -1,7 +1,7 @@
 import { serve } from "std/http/server.ts";
 import { $interface, $number, guard } from "succulent";
 
-const puppies = Deno.readFile("./data.json").then(JSON.parse).then((data) =>
+const puppiesThunk = Deno.readTextFile("./data.json").then(JSON.parse).then((data) =>
 	data.puppies
 );
 
@@ -11,12 +11,13 @@ const $PuppiesRequestBody = $interface({
 
 async function handler(req: Request): Promise<Response> {
 	const url = new URL(req.url);
+	const puppies = await puppiesThunk;
 
 	if (url.pathname === "/api/puppies") {
 		try {
 			const body = await req.json();
 			guard(body, $PuppiesRequestBody);
-			return new Response(JSON.stringify((await puppies).slice(0, body.count)));
+			return new Response(JSON.stringify(puppies.slice(0, body.count)));
 		} catch {
 			return new Response("Error", { status: 500 });
 		}
