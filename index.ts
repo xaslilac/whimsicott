@@ -23,9 +23,9 @@ function doc(body: string) {
 	`;
 }
 
-const puppiesThunk = Deno.readTextFile("./data.json").then(JSON.parse).then((data) =>
-	data.puppies
-);
+const puppiesThunk = Deno.readTextFile("./data.json").then(JSON.parse).then((
+	data,
+) => data.puppies);
 
 const $PuppiesRequestBody = $interface({
 	count: $number.that((n) => n <= puppies.length),
