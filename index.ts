@@ -1,9 +1,31 @@
 import { serve } from "std/http/server.ts";
 import { $interface, $number, guard } from "succulent";
 
-const puppiesThunk = Deno.readTextFile("./data.json").then(JSON.parse).then((
-	data,
-) => data.puppies);
+function doc(body: string) {
+	return `
+		<!doctype html>
+		<html>
+		<head>
+		<title>Whimsicott<title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Outfit&display=swap" rel="stylesheet">
+		<style>
+			body {
+				font-family: Outfit;
+			}
+		</style>
+		</head>
+		<body>
+		${body}
+		</body>
+		</html>
+	`;
+}
+
+const puppiesThunk = Deno.readTextFile("./data.json").then(JSON.parse).then((data) =>
+	data.puppies
+);
 
 const $PuppiesRequestBody = $interface({
 	count: $number.that((n) => n <= puppies.length),
@@ -37,7 +59,7 @@ async function handler(req: Request): Promise<Response> {
 	let list = puppies.map((name) => `${name} is cute!`);
 
 	return new Response(
-		"Hi friend! Beep boop :)<br />" + list.join("<br />"),
+		doc("Hi friend! Beep boop :)<br />" + list.join("<br />")),
 		{
 			headers: { "content-type": "text/html" },
 		},
