@@ -1,13 +1,9 @@
 import { serve } from "std/http/server.ts";
 import { $interface, $number, guard } from "succulent";
 
-const puppies = [
-	"August",
-	"Dot",
-	"Mady",
-	"Spot",
-	"Toby",
-];
+const puppies = Deno.readFile("./data.json").then(JSON.parse).then((data) =>
+	data.puppies
+);
 
 const $PuppiesRequestBody = $interface({
 	count: $number.that((n) => n <= puppies.length),
@@ -20,7 +16,7 @@ async function handler(req: Request): Promise<Response> {
 		try {
 			const body = await req.json();
 			guard(body, $PuppiesRequestBody);
-			return new Response(JSON.stringify(puppies.slice(0, body.count)));
+			return new Response(JSON.stringify((await puppies).slice(0, body.count)));
 		} catch {
 			return new Response("Error", { status: 500 });
 		}
