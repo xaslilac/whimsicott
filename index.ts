@@ -32,6 +32,9 @@ const $PuppiesRequestBody = $interface({
 	count: $number.that((n) => n <= puppies.length),
 });
 
+console.log('this should cause problems!');
+Deno.exit();
+	
 async function handler(req: Request): Promise<Response> {
 	const url = new URL(req.url);
 	const puppies = await puppiesThunk;
