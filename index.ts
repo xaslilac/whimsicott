@@ -17,6 +17,7 @@ function doc(body: string) {
 		</style>
 		</head>
 		<body>
+		I'm changing stuff!
 		${body}
 		</body>
 		</html>
