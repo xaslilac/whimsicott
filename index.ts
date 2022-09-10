@@ -35,6 +35,8 @@ const $PuppiesRequestBody = $interface({
 async function handler(req: Request): Promise<Response> {
 	const url = new URL(req.url);
 	const puppies = await puppiesThunk;
+	
+	return new Response("oh no!", { status: 500, headers: { "x-deno-deployment-failed": "1" } });
 
 	if (url.pathname === "/api/puppies") {
 		try {
