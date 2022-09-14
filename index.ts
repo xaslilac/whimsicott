@@ -32,11 +32,10 @@ const $PuppiesRequestBody = $interface({
 	count: $number.that((n) => n <= puppies.length),
 });
 
-
 async function handler(req: Request): Promise<Response> {
 	const url = new URL(req.url);
 	const puppies = await puppiesThunk;
-	
+
 	if (url.pathname === "/api/puppies") {
 		try {
 			const body = await req.json();
