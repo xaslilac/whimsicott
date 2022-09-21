@@ -1,6 +1,8 @@
 import { serve } from "std/http/server.ts";
 import { $interface, $number, guard } from "succulent";
 
+foo();
+
 function doc(body: string) {
 	return `
 		<!doctype html>
